@@ -8,9 +8,9 @@
 - validation체크
 
 🧪 테스트 방법
-- 사용툴 : VSCode
-- 서버구동 : node server.js
-- 클라이언트 : npm run dev
+- Tool : VSCode
+- 서버 구동 : node server.js
+- 클라이언트 구동 : npm run dev
 - 접속주소 : http://localhost:5173/
 <br/>
 
