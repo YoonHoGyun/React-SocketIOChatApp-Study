@@ -1,0 +1,59 @@
+.chatList {
+  position: fixed; /* 고정 위치 */
+  top: 240px; /* navbar 높이보다 아래에 배치 */
+  bottom: 40px; /* 입력창 위에 배치 */
+  left: 0;
+  right: 0;
+  overflow-y: auto; /* 세로 스크롤 추가 */
+  background-color: white; /* 배경색 흰색 */
+  padding: 20px;
+  background-color: lightcyan;
+}
+
+.chatList > div {
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #543ed4;
+  color: white;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+.navbar > h1 {
+  margin-left: 10px;
+}
+
+.navbar > h2 {
+  margin-left: 10px;
+}
+
+.messageInput {
+  position: fixed; /* Set the navbar to fixed position */
+  bottom: 0; /* Position the navbar at the bottom of the page */
+  width: 100%; /* Full width */
+  display: flex;
+}
+
+.messageInput > input {
+  flex-grow: 1;
+}
+
+.card {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.card > input {
+  width: 250px;
+  margin-left: 10px;
+}
+
+.card > button {
+  margin-left: 10px;
+}
