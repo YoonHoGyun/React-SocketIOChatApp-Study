@@ -1,0 +1,55 @@
+name: React Chat Project
+
+on:
+  push:
+    branch:
+      - master
+
+jobs:
+  deploy:
+    steps:
+      - name: GitHub 저장소 Checkout
+        uses: actions/checkout@v4
+
+      - name: Node.js 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' # 필요 시 버전 수정
+
+      - name: npm 의존성 설치
+        run: npm install
+
+      - name: 프로젝트 zip 압축
+        run: zip -r chat-app.zip . -x ".git/*" "node_modules/*"
+
+      - name: EC2로 파일 전송
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          source: chat-app.zip
+          target: /home/ubuntu/chat-app/tobe
+
+      - name: SSH 접속 및 서버 재시작
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            # 이전 서버 종료
+            pm2 stop backend frontend
+
+            # 이전 코드 정리 및 신규 배포
+            rm -rf /home/ubuntu/chat-app/current
+            mkdir -p /home/ubuntu/chat-app/current
+            unzip /home/ubuntu/chat-app/tobe/chat-app.zip -d /home/ubuntu/chat-app/current
+
+            # 서버 실행 (필요 시 pm2 사용 권장)
+            pm2 start server.js --name 'backend'
+            pm2 start npm --name 'frontend' -- run dev
+
+            # 임시 폴더 정리
+            rm -rf /home/ubuntu/chat-app/tobe
