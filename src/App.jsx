@@ -28,7 +28,7 @@ function App() {
     if(isUsernameEmpty){
       alert('닉네임을 입력해주세요.');
     }else{
-      const _socket = io('http://localhost:3000', {
+      const _socket = io('http://13.125.210.159:3000', {
         autoConnect: false,
         query: {
           username: username
