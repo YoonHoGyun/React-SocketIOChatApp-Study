@@ -43,6 +43,9 @@ jobs:
             # 이전 서버 종료
             pm2 stop backend frontend
 
+            sudo apt-get update -y
+            sudo apt-get install unzip -y
+
             # 이전 코드 정리 및 신규 배포
             rm -rf /home/ubuntu/chat-app/current
             mkdir -p /home/ubuntu/chat-app/current
