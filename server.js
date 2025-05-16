@@ -35,7 +35,7 @@ io.on('connection', (client) => {
     })
 });
 
-server.listen(3000, () => {
+server.listen(3000, '0.0.0.0', () => {
     console.log("서버에서 듣고 있습니다... 3000");
 });
 
