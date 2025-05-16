@@ -109,7 +109,7 @@ function App() {
         </>
       );
     }else{
-      return <button onClick={() => disConnectToChatServer()}>접속 종료</button>;
+      return <button onClick={() => disConnectToChatServer()}>접속종료</button>;
     }
   }
 
