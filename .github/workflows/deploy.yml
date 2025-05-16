@@ -51,6 +51,9 @@ jobs:
             mkdir -p /home/ubuntu/chat-app/current
             unzip /home/ubuntu/chat-app/tobe/chat-app.zip -d /home/ubuntu/chat-app/current
 
+            #프로젝트 경로 이동
+            cd /home/ubuntu/chat-app/current
+
             # 서버 실행 (필요 시 pm2 사용 권장)
             pm2 start server.js --name 'backend'
             pm2 start npm --name 'frontend' -- run dev
