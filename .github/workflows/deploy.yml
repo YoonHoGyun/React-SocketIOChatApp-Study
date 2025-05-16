@@ -27,7 +27,7 @@ jobs:
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
+          username: ${{ secrets.EC2_NAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           source: chat-app.zip
           target: /home/ubuntu/chat-app/tobe
@@ -36,7 +36,7 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
+          username: ${{ secrets.EC2_NAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script_stop: true
           script: |
